@@ -7,24 +7,25 @@
 
 import UIKit
 
-public extension UIView {
+extension UIView: ExtensionCompatible {}
+public extension Extension where Base: UIView {
     func overlay(on view: UIView) {
-        view.addSubview(self)
-        self.translatesAutoresizingMaskIntoConstraints = false
-        self.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        self.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        self.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        self.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        view.addSubview(base)
+        base.translatesAutoresizingMaskIntoConstraints = false
+        base.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        base.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        base.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        base.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
     }
     
     func overlay(on view: UIView, insets: UIEdgeInsets) {
-        view.addSubview(self)
-        self.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(base)
+        base.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            topAnchor.constraint(equalTo: view.topAnchor, constant: insets.top),
-            leftAnchor.constraint(equalTo: view.leftAnchor, constant: insets.left),
-            rightAnchor.constraint(equalTo: view.rightAnchor, constant: -insets.right),
-            bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -insets.bottom)
+            base.topAnchor.constraint(equalTo: view.topAnchor, constant: insets.top),
+            base.leftAnchor.constraint(equalTo: view.leftAnchor, constant: insets.left),
+            base.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -insets.right),
+            base.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -insets.bottom)
             ])
     }
 }

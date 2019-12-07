@@ -28,7 +28,7 @@ public extension XibInitializable where Self: UIView {
         let xibView = nib.instantiate(withOwner: self, options: nil).first as! UIView
         xibView.backgroundColor = .clear
         self.insertSubview(xibView, at: 0)
-        xibView.overlay(on: self)
+        xibView.ex.overlay(on: self)
     }
     
     init() {

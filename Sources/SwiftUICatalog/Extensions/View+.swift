@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-extension View {
+public extension View {
     func fittingHeight() -> CGFloat {
         let uiView = UIHostingController(rootView: self).view!
         let size = uiView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize,
